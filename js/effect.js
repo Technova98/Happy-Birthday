@@ -1,7 +1,14 @@
-$(window).load(function(){
+function showPage() {
 	$('.loading').fadeOut('fast');
 	$('.container').fadeIn('fast');
+}
+
+$(document).ready(function(){
+	showPage();
 });
+
+// Immediate fallback: guarantees page renders within 400ms
+setTimeout(showPage, 400);
 
 $('document').ready(function(){
 	function getRandPos() {
