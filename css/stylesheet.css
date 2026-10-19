@@ -50,7 +50,7 @@ body {
   display: none;   /* hidden until button click */
   position: absolute;
   right: 65px;     /* aligns with right album photos */
-  top: 360px;      /* sits below the second right photo */
+  top: 425px;      /* sits below the second right photo */
   width: 200px;
   height: auto;
   opacity: 0.9;

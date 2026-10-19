@@ -1,0 +1,664 @@
+/* =========================================================
+   Modern Aesthetics, 3D Cake & Full Mobile Responsiveness
+   Preserves all letter text while giving desktop & mobile a stunning look
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap');
+
+/* --- Smooth Global Rendering --- */
+html, body {
+  font-family: 'Poppins', 'Outfit', 'Noto Sans Ethiopic', 'Nyala', 'Ebrima', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Ambient Canvas behind all elements */
+#ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1500;
+}
+
+/* --- Dynamic Background Warmth & Glow --- */
+body.peach {
+  background: radial-gradient(circle at 50% 35%, #ffe2cc 0%, #ffd0b3 60%, #ffc0a0 100%) !important;
+}
+
+body.peach-after {
+  background: radial-gradient(circle at 50% 35%, #fff1e6 0%, #ffd9c0 50%, #ffc7a8 100%) !important;
+  animation: modernBackgroundShift 12s ease-in-out infinite alternate !important;
+}
+
+@keyframes modernBackgroundShift {
+  0% {
+    background: radial-gradient(circle at 50% 35%, #fff1e6 0%, #ffd9c0 50%, #ffc7a8 100%);
+  }
+  50% {
+    background: radial-gradient(circle at 50% 30%, #ffe8d6 0%, #ffd0b5 50%, #ffbe9e 100%);
+  }
+  100% {
+    background: radial-gradient(circle at 50% 40%, #fff4ec 0%, #ffddc7 50%, #ffcaa9 100%);
+  }
+}
+
+/* --- Floating Bottom Toolbar --- */
+.navbar-fixed-bottom {
+  background: transparent !important;
+  border: none !important;
+  bottom: 24px !important;
+  pointer-events: none;
+  z-index: 2500;
+}
+
+.navbar-fixed-bottom .row {
+  pointer-events: auto;
+}
+
+.navbar-fixed-bottom .col-md-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modern Gradient Pill Buttons */
+.btn-primary {
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  color: #ffffff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.4px !important;
+  padding: 13px 32px !important;
+  border-radius: 50px !important;
+  box-shadow: 0 10px 25px rgba(255, 107, 139, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.7) !important;
+  text-transform: none !important;
+  cursor: pointer;
+  outline: none !important;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  animation: modernButtonPulse 2.8s infinite ease-in-out !important;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: rotate(25deg);
+  animation: buttonShine 4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes buttonShine {
+  0% { left: -60%; }
+  30%, 100% { left: 140%; }
+}
+
+@keyframes modernButtonPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 14px 32px rgba(255, 107, 139, 0.65), 0 0 18px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 16px 35px rgba(255, 107, 139, 0.7), 0 0 25px rgba(255, 255, 255, 0.5) !important;
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.97) !important;
+}
+
+/* =========================================================
+   3D Birthday Cake & Candle Architecture
+   ========================================================= */
+
+.cake-cover {
+  position: relative;
+  margin: 10px auto 0 auto !important;
+  height: 300px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 120 !important;
+}
+
+.cake {
+  position: relative !important;
+  display: none;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 auto !important;
+  width: 250px !important;
+  height: 250px !important;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.35));
+}
+
+/* Cake Base Plate */
+.cake:after {
+  background: linear-gradient(to right, #dedede, #ffffff, #cfcfcf) !important;
+  border-radius: 250px !important;
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 250px !important;
+  height: 8px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+
+/* Rich Chocolate Sponge Layer */
+.bizcocho {
+  background: linear-gradient(135deg, #431f0d 0%, #6d3826 50%, #431f0d 100%) !important;
+  border-radius: 8px 8px 18px 18px !important;
+  position: absolute !important;
+  bottom: 8px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 0 !important;
+  width: 170px !important;
+  height: 110px !important;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.35), 0 6px 16px rgba(0,0,0,0.2) !important;
+  z-index: 5 !important;
+}
+
+/* Vanilla Cream Stripes inside the Cake */
+.bizcocho:after,
+.bizcocho:before {
+  background: rgba(255, 245, 235, 0.85) !important;
+  content: "" !important;
+  position: absolute !important;
+  width: 100% !important;
+  height: 12px !important;
+  border-radius: 4px !important;
+}
+
+.bizcocho:after {
+  top: 30% !important;
+  left: 0 !important;
+}
+
+.bizcocho:before {
+  top: 65% !important;
+  left: 0 !important;
+}
+
+/* Creamy Vanilla Frosting (Cobertura) */
+.cobertura {
+  background: linear-gradient(180deg, #ffffff 0%, #f6ebdf 100%) !important;
+  border-radius: 22px 22px 14px 14px !important;
+  position: absolute !important;
+  top: 92px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 0 !important;
+  width: 190px !important;
+  height: 42px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.95) !important;
+  z-index: 10 !important;
+}
+
+/* Frosting drip details */
+.cobertura:after,
+.cobertura:before {
+  background: #f6ebdf !important;
+  border-radius: 0 0 10px 10px !important;
+  content: "" !important;
+  position: absolute !important;
+  width: 16px !important;
+  height: 26px !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1) !important;
+}
+
+.cobertura:after {
+  top: 35px !important;
+  right: 42px !important;
+}
+
+.cobertura:before {
+  top: 35px !important;
+  right: 115px !important;
+}
+
+/* Birthday Candle (Velas) */
+.velas {
+  background: repeating-linear-gradient(45deg, #ffffff, #ffffff 5px, #ff477e 5px, #ff477e 10px) !important;
+  border-radius: 8px !important;
+  position: absolute !important;
+  top: 48px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+  width: 16px !important;
+  height: 52px !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2) !important;
+  z-index: 15 !important;
+}
+
+.velas:before,
+.velas:after {
+  display: none !important;
+}
+
+/* Candle Flame (Fuego) */
+.fuego {
+  display: none;
+  border-radius: 50% 50% 35% 35% !important;
+  position: absolute !important;
+  top: -24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-left: 0 !important;
+  width: 16px !important;
+  height: 28px !important;
+  background: radial-gradient(ellipse at 50% 80%, #ffffff 0%, #ffeb3b 35%, #ff5722 80%, transparent 100%) !important;
+  box-shadow: 0 0 25px 8px rgba(255, 170, 0, 0.7), 0 0 50px 18px rgba(255, 100, 0, 0.35) !important;
+  animation: modernFlicker 0.8s infinite alternate ease-in-out !important;
+  z-index: 20 !important;
+}
+
+@keyframes modernFlicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.95; }
+  50% { transform: translateX(-50%) scale(1.08, 0.95) rotate(1deg); opacity: 1; }
+  100% { transform: translateX(-50%) scale(0.96, 1.05) rotate(2deg); opacity: 0.9; }
+}
+
+/* Candlelight Warm Aura */
+.candle-glow-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 120, 0.5) 0%, rgba(255, 140, 50, 0.25) 45%, transparent 72%);
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+  animation: candleGlowPulse 2.2s infinite ease-in-out alternate;
+}
+
+@keyframes candleGlowPulse {
+  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+/* Diara's Profile Photo next to Cake (Desktop) */
+.profile-img {
+  position: absolute !important;
+  bottom: 12px !important;
+  right: -130px !important;
+  width: 130px !important;
+  height: 130px !important;
+  border: 4px solid #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 20px rgba(255,182,193,0.5) !important;
+  object-fit: cover !important;
+  z-index: 25 !important;
+  transition: transform 0.3s ease !important;
+}
+
+.profile-img:hover {
+  transform: scale(1.08) rotate(2deg) !important;
+}
+
+/* --- Floating Desktop Album Photos --- */
+.album-photo {
+  border: 4px solid rgba(255, 255, 255, 0.92) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 182, 193, 0.35) !important;
+  backdrop-filter: blur(6px);
+  cursor: pointer !important;
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.45s ease !important;
+  z-index: 5;
+}
+
+.album-left-1 {
+  object-position: center 30% !important;
+  animation: floatCardLeft1 6s ease-in-out infinite alternate !important;
+}
+.album-left-2 {
+  animation: floatCardLeft2 5.5s ease-in-out infinite alternate !important;
+}
+.album-left-3 {
+  animation: floatCardLeft3 6.5s ease-in-out infinite alternate !important;
+}
+.album-right-1 {
+  animation: floatCardRight1 5.8s ease-in-out infinite alternate !important;
+}
+.album-right-2 {
+  animation: floatCardRight2 6.2s ease-in-out infinite alternate !important;
+}
+
+@keyframes floatCardLeft1 {
+  0% { transform: translateY(0px) rotate(-5deg); }
+  100% { transform: translateY(-12px) rotate(-3deg); }
+}
+@keyframes floatCardLeft2 {
+  0% { transform: translateY(0px) rotate(4deg); }
+  100% { transform: translateY(-10px) rotate(6.5deg); }
+}
+@keyframes floatCardLeft3 {
+  0% { transform: translateY(0px) rotate(-3deg); }
+  100% { transform: translateY(-11px) rotate(-1deg); }
+}
+@keyframes floatCardRight1 {
+  0% { transform: translateY(0px) rotate(5deg); }
+  100% { transform: translateY(-12px) rotate(3deg); }
+}
+@keyframes floatCardRight2 {
+  0% { transform: translateY(0px) rotate(-4deg); }
+  100% { transform: translateY(-10px) rotate(-6.5deg); }
+}
+
+.album-photo:hover {
+  transform: scale(1.12) rotate(0deg) !important;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 105, 180, 0.6) !important;
+  z-index: 200 !important;
+}
+
+.can-zoom {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+  animation: hintFloat 3s infinite ease-in-out alternate;
+  z-index: 4;
+}
+
+@keyframes hintFloat {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-6px) scale(1.03); }
+}
+
+/* --- Balloons --- */
+.balloons {
+  box-shadow: inset -8px -8px 20px rgba(0, 0, 0, 0.15), inset 8px 8px 20px rgba(255, 255, 255, 0.4), 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.balloons h2 {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 800 !important;
+  text-shadow: 0 3px 12px rgba(255, 255, 255, 0.9), 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Modern Message Card Presentation (100% preserved text) --- */
+.message {
+  position: fixed !important;
+  top: 48% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 90% !important;
+  max-width: 860px !important;
+  text-align: center !important;
+  z-index: 2200 !important;
+  pointer-events: none;
+}
+
+.message p {
+  display: none;
+  font-family: 'Poppins', 'Outfit', 'Noto Sans Ethiopic', 'Nyala', 'Ebrima', sans-serif !important;
+  font-size: 34px !important;
+  line-height: 1.5 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  color: #ffffff !important;
+  text-transform: none !important;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 105, 180, 0.5) !important;
+  padding: 22px 36px !important;
+  border-radius: 24px !important;
+  background: rgba(18, 14, 28, 0.65) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45), 0 0 30px rgba(255, 107, 139, 0.35) !important;
+  margin: 0 auto !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  animation: messageSoftFloat 3.5s infinite ease-in-out alternate;
+}
+
+@keyframes messageSoftFloat {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-6px) scale(1.01); }
+}
+
+/* --- Modern Lightbox Modal --- */
+.lightbox {
+  background: rgba(8, 8, 18, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  z-index: 99999 !important;
+}
+
+.lightbox img {
+  border: 5px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 45px rgba(255, 182, 193, 0.5) !important;
+  animation: lightboxPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+@keyframes lightboxPop {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.lightbox::after {
+  content: '✕ Tap anywhere to close';
+  position: absolute;
+  bottom: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+}
+
+/* --- Music Widget --- */
+.music-widget {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 8px 16px;
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 3000;
+  cursor: pointer;
+  user-select: none;
+}
+
+.music-widget .music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+
+.music-widget .music-bars span {
+  width: 3px;
+  height: 4px;
+  background: #ff6b8b;
+  border-radius: 2px;
+}
+
+.music-widget.playing .music-bars span:nth-child(1) { animation: musicBar 0.9s infinite alternate; }
+.music-widget.playing .music-bars span:nth-child(2) { animation: musicBar 1.2s infinite alternate 0.2s; }
+.music-widget.playing .music-bars span:nth-child(3) { animation: musicBar 0.7s infinite alternate 0.4s; }
+.music-widget.playing .music-bars span:nth-child(4) { animation: musicBar 1.0s infinite alternate 0.1s; }
+
+@keyframes musicBar {
+  0% { height: 3px; }
+  100% { height: 14px; }
+}
+
+.music-widget .music-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* =========================================================
+   DEDICATED STUNNING MOBILE EXPERIENCE (@media max-width: 768px)
+   ========================================================= */
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative;
+  }
+
+  /* Bulbs scaled to fit phone screen */
+  .bulb-holder {
+    padding: 0 2px !important;
+  }
+  .bulb {
+    width: 26px !important;
+    height: 44px !important;
+    background-size: 26px 44px !important;
+  }
+
+  /* Banner scaled */
+  .bannar {
+    max-width: 86vw !important;
+    height: auto !important;
+  }
+
+  /* Balloons on Mobile */
+  .balloons {
+    width: 44px !important;
+    height: 76px !important;
+    background-size: 44px 76px !important;
+    opacity: 0.9 !important;
+    z-index: 90 !important;
+  }
+  .balloons h2 {
+    font-size: 20px !important;
+    line-height: 52px !important;
+    font-weight: 800 !important;
+  }
+
+  /* Cake on Mobile: perfectly centered with glowing cake topper */
+  .cake-cover {
+    margin-top: 15px !important;
+    height: 250px !important;
+  }
+  .cake {
+    transform: scale(0.82) !important;
+  }
+
+  /* Diara's photo sits above cake as a center topper medallion */
+  .profile-img {
+    top: -78px !important;
+    bottom: auto !important;
+    right: 50% !important;
+    transform: translateX(50%) !important;
+    width: 85px !important;
+    height: 85px !important;
+    border-radius: 50% !important;
+    border: 3px solid #ffffff !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 107, 139, 0.5) !important;
+  }
+
+  /* Mobile Photo Memory Story Tray:
+     The 5 photos appear side-by-side as glowing story bubbles above the bottom button dock! */
+  .album-photo {
+    position: fixed !important;
+    bottom: 82px !important;
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 50% !important;
+    border: 2.5px solid #ffffff !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 10px rgba(255, 107, 139, 0.4) !important;
+    z-index: 1500 !important;
+    animation: none !important;
+    transform: none !important;
+    object-fit: cover !important;
+  }
+
+  .album-left-1 { left: calc(50% - 145px) !important; top: auto !important; }
+  .album-left-2 { left: calc(50% - 85px) !important; top: auto !important; }
+  .album-left-3 { left: calc(50% - 25px) !important; top: auto !important; }
+  .album-right-1 { left: calc(50% + 35px) !important; top: auto !important; }
+  .album-right-2 { left: calc(50% + 95px) !important; top: auto !important; }
+
+  .can-zoom {
+    display: none !important;
+  }
+
+  /* Bottom Dock on Mobile */
+  .navbar-fixed-bottom {
+    bottom: 15px !important;
+    width: 100% !important;
+  }
+  .navbar-fixed-bottom .col-md-6 {
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+  .btn-primary {
+    width: 100% !important;
+    font-size: 15px !important;
+    padding: 13px 20px !important;
+  }
+
+  /* Message subtitle card on Mobile */
+  .message {
+    width: 92% !important;
+    top: 45% !important;
+  }
+  .message p {
+    font-size: 21px !important;
+    padding: 18px 24px !important;
+    border-radius: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Music widget compact on mobile */
+  .music-widget {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 6px 10px !important;
+  }
+  .music-widget .music-label {
+    display: none !important;
+  }
+}

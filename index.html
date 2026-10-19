@@ -7,7 +7,7 @@
 <head>
 	<title>Happy Birthday</title>
 	<meta charset="UTF-8" />
-	<meta name="description" content="Happy Birthday Anggie">
+	<meta name="description" content="Happy Birthday Diara">
 	<meta name="robots" content="index, follow" />
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 	<link rel="author" href="alex" /> 
@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="css/loading.css">
+	<link rel="stylesheet" type="text/css" href="css/modern.css">
 	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
 	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
 	<link rel="stylesheet/less" href="cake.less"> 
@@ -266,11 +267,14 @@
 .album-photo {
   display: none;
   position: absolute;
-  width: 300px; /* looks like landscape photo */
-  height: auto;
+  width: 270px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center 20%;
   border: 5px solid white;
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
   border-radius: 10px;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
@@ -281,11 +285,12 @@
 
 /* Left side */
 .album-left-1 { top: 30px; left: 50px; transform: rotate(-5deg); }
-.album-left-2 { top: 205px; left: 70px; transform: rotate(4deg); }
+.album-left-2 { top: 230px; left: 65px; transform: rotate(4deg); }
+.album-left-3 { top: 430px; left: 50px; transform: rotate(-3deg); }
 
 /* Right side */
 .album-right-1 { top: 30px; right: 50px; transform: rotate(5deg); }
-.album-right-2 { top: 205px; right: 70px; transform: rotate(-4deg); }
+.album-right-2 { top: 230px; right: 65px; transform: rotate(-4deg); }
 
 
 /* ============================================== TEXT
@@ -309,6 +314,7 @@ p {
   right: -170px;  /* 70px to the right of cake */
   width: 150px;
   height: 150px;
+  object-fit: cover;
   border: 5px solid white;
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
   border-radius: 10px;
@@ -324,6 +330,7 @@ p {
   <img src="assets/images/photo2.jpg" class="album-photo album-left-2">
   <img src="assets/images/photo3.jpg" class="album-photo album-right-1">
   <img src="assets/images/photo4.jpg" class="album-photo album-right-2">
+  <img src="assets/images/photo5.jpg" class="album-photo album-left-3">
 
   <!-- Hint image -->
   <img src="assets/images/can-zoom.png" class="can-zoom">
@@ -451,7 +458,7 @@ p {
 				<p>and make it the best memory..</p>
 				<p>lastly...</p>
 				<p>I'd like to wish you one more time</p>
-				<p>a very happy birthday babyy ❤️</p>
+				<p>Happy Birthday, Diara! 🎂 ሁልጊዜ ፈገግታሽ አይለይሽ፣ ህልሞችሽ ሁሉ እውን ይሁኑ! መልካም ልደት እህቴ! 🎁🎈</p>
 			</div>
 		</div>
 		<div class="navbar navbar-fixed-bottom">
@@ -489,6 +496,7 @@ p {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="js/effect.js"></script>
+<script src="js/modern-effects.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SQ2H9J48M"></script>
 <script>
